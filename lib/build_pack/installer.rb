@@ -9,7 +9,7 @@ module BuildPack
         make_dirs
         Downloader.download_latest_client_to(@mysql_pkg) unless cached?
         if client_exists?
-          install_client and cleanup
+          install_client and cleanup and `apt policy libreadline6`
         else
           fail_install
         end
